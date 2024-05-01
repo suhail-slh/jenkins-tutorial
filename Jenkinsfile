@@ -3,13 +3,14 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'echo helloo dev branch'
+                sh 'echo "helloo dev branch"'
                 sh 'chmod 755 ./flakey-deploy.sh'
                 timeout(time: 2, unit: 'SECONDS') {
                     retry(5) {
                         sh './flakey-deploy.sh'
                     }
                 }
+                sh 'echo "byee dev branch"'
             }
         }
     }
