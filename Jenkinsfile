@@ -9,7 +9,6 @@ pipeline {
                         sh './flakey-deploy.sh'
                     }
                 }
-                sh 'echo "no more retries"'
             }
         }
     }
