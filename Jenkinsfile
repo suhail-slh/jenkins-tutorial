@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'chmod 777 ./flakey-deploy.sh'
                 timeout(time: 2, unit: 'SECONDS') {
                     retry(5) {
                         sh './flakey-deploy.sh'
