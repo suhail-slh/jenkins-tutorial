@@ -9,8 +9,8 @@ pipeline {
                     retry(1) {
                         sh './flakey-deploy.sh'
                     }
+                    sh 'echo "byee dev branch"'
                 }
-                sh 'echo "byee dev branch"'
             }
         }
     }
