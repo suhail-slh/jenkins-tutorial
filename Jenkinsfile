@@ -6,7 +6,7 @@ pipeline {
                 sh 'echo "helloo dev branch"'
                 sh 'chmod 755 ./flakey-deploy.sh'
                 timeout(time: 5, unit: 'SECONDS') {
-                    retry(1) {
+                    retry(2) {
                         sh './flakey-deploy.sh'
                     }
                     sh 'echo "byee dev branch"'
