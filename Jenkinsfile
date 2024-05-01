@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                    mvn -help
-                    echo "Hello World"
-                '''
+                timeout(time: 2, unit: 'SECONDS') {
+                    retry(5) {
+                        sh './flakey-deploy.sh'
+                        sh 'echo "Lemme try again"'
+                    }
+                    sh 'echo "no more retries"'
+                }
             }
         }
     }
